@@ -4,6 +4,19 @@ function Overview({ goals }) {
   const totalTarget = goals.reduce((sum, goal) => sum + goal.targetAmount, 0)
   const totalSaved = goals.reduce((sum, goal) => sum + goal.savedAmount, 0)
   const overallProgress = totalTarget > 0 ? (totalSaved / totalTarget) * 100 : 0
+  
+  const today = new Date()
+  const warningGoals = goals.filter(goal => {
+    const deadline = new Date(goal.deadline)
+    const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+    return daysLeft <= 30 && daysLeft >= 0 && goal.savedAmount < goal.targetAmount
+  })
+  
+  const overdueGoals = goals.filter(goal => {
+    const deadline = new Date(goal.deadline)
+    const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+    return daysLeft < 0 && goal.savedAmount < goal.targetAmount
+  })
 
   return (
     <div className="overview">
@@ -30,6 +43,35 @@ function Overview({ goals }) {
           <p>Overall Progress</p>
         </div>
       </div>
+      
+      {(warningGoals.length > 0 || overdueGoals.length > 0) && (
+        <div className="alerts">
+          {warningGoals.length > 0 && (
+            <div className="alert warning">
+              <h4>⚠️ Deadlines Approaching</h4>
+              <ul>
+                {warningGoals.map(goal => {
+                  const daysLeft = Math.ceil((new Date(goal.deadline) - today) / (1000 * 60 * 60 * 24))
+                  return (
+                    <li key={goal.id}>{goal.name} - {daysLeft} days left</li>
+                  )
+                })}
+              </ul>
+            </div>
+          )}
+          
+          {overdueGoals.length > 0 && (
+            <div className="alert overdue">
+              <h4>🚨 Overdue Goals</h4>
+              <ul>
+                {overdueGoals.map(goal => (
+                  <li key={goal.id}>{goal.name} - Deadline passed</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
