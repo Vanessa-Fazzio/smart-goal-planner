@@ -1,42 +1,184 @@
-#root {
-  max-width: 1280px;
+.app {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  color: #333;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  margin: 50px 0;
+}
+
+.overview {
+  margin-bottom: 30px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stat {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.stat h3 {
+  margin: 0 0 10px 0;
+  color: #2c5aa0;
+  font-size: 24px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.stat p {
+  margin: 0;
+  color: #666;
+}
+
+.forms-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.goal-form, .deposit-form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.goal-form h2, .deposit-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.goal-form form, .deposit-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.goal-form input, .goal-form select, .deposit-form input, .deposit-form select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.goal-form button, .deposit-form button {
+  background: #2c5aa0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.goal-form button:hover, .deposit-form button:hover {
+  background: #1e3f73;
+}
+
+.goal-list h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.goal-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-left: 4px solid #2c5aa0;
+}
+
+.goal-card.completed {
+  border-left-color: #28a745;
+}
+
+.goal-card h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+}
+
+.goal-info p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2c5aa0;
+  transition: width 0.3s ease;
+}
+
+.goal-card.completed .progress-fill {
+  background: #28a745;
+}
+
+.progress-text {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
+
+.delete-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background: #c82333;
+}
+
+@media (max-width: 768px) {
+  .forms-section {
+    grid-template-columns: 1fr;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .stats {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .goals-grid {
+    grid-template-columns: 1fr;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
