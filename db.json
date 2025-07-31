@@ -17,6 +17,15 @@
       "category": "Emergency",
       "deadline": "2026-06-30",
       "createdAt": "2023-05-01"
+    },
+    {
+      "id": "1753957916054",
+      "name": "vacation",
+      "targetAmount": 12000,
+      "category": "Travel",
+      "deadline": "2025-08-09",
+      "savedAmount": 0,
+      "createdAt": "2025-07-31"
     }
   ]
 }

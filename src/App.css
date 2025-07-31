@@ -1,3 +1,4 @@
+/* M-Pesa Inspired Design */
 * {
   margin: 0;
   padding: 0;
@@ -5,353 +6,434 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-  background-color: #f5f7fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #00a651 0%, #008f47 100%);
   color: #333;
-  margin: 0;
-  padding: 0;
+  min-height: 100vh;
 }
 
 .app {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  min-height: 100vh;
+  background: #f5f5f5;
 }
 
+/* Header */
 header {
+  background: linear-gradient(135deg, #00a651 0%, #008f47 100%);
+  color: white;
+  padding: 20px;
   text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  color: #2c3e50;
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.loading {
-  text-align: center;
-  font-size: 1.2rem;
-  padding: 50px;
-}
-
-/* Overview Styles */
-.overview {
-  background: white;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 30px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.2rem;
+  color: #00a651;
+}
+
+/* Overview Cards */
+.overview {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
 .overview h2 {
-  color: #2c3e50;
+  color: #00a651;
+  font-size: 1.4rem;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .stats {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
   margin-bottom: 20px;
 }
 
 .stat {
-  text-align: center;
+  background: linear-gradient(135deg, #00a651 0%, #008f47 100%);
+  color: white;
   padding: 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,166,81,0.3);
 }
 
 .stat h3 {
-  font-size: 2rem;
-  color: #27ae60;
-  margin-bottom: 5px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .stat p {
-  color: #7f8c8d;
+  font-size: 0.85rem;
+  opacity: 0.9;
   font-weight: 500;
 }
 
+/* Alerts */
 .alerts {
   margin-top: 20px;
 }
 
 .alert {
-  padding: 15px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border-left: 4px solid;
 }
 
 .alert.warning {
-  background: #fff3cd;
-  border: 1px solid #ffeaa7;
-  color: #856404;
+  background: #fff8e1;
+  border-left-color: #ff9800;
+  color: #e65100;
 }
 
 .alert.overdue {
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  color: #721c24;
+  background: #ffebee;
+  border-left-color: #f44336;
+  color: #c62828;
 }
 
 .alert h4 {
-  margin-bottom: 10px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
 }
 
 .alert ul {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
 }
 
 .alert li {
-  padding: 5px 0;
+  padding: 4px 0;
+  font-size: 0.9rem;
 }
 
 /* Forms Section */
 .forms-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  margin-bottom: 30px;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
 .goal-form, .deposit-form {
   background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .goal-form h2, .deposit-form h2 {
-  color: #2c3e50;
+  color: #00a651;
+  font-size: 1.3rem;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .goal-form form, .deposit-form form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
 .goal-form input, .goal-form select,
 .deposit-form input, .deposit-form select {
-  padding: 12px;
-  border: 2px solid #e1e8ed;
-  border-radius: 8px;
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
+  background: #fafafa;
 }
 
 .goal-form input:focus, .goal-form select:focus,
 .deposit-form input:focus, .deposit-form select:focus {
   outline: none;
-  border-color: #3498db;
+  border-color: #00a651;
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0,166,81,0.1);
 }
 
 .goal-form button, .deposit-form button {
-  background: #3498db;
+  background: linear-gradient(135deg, #00a651 0%, #008f47 100%);
   color: white;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 16px;
+  border-radius: 12px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,166,81,0.3);
 }
 
 .goal-form button:hover, .deposit-form button:hover {
-  background: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,166,81,0.4);
+}
+
+.goal-form button:active, .deposit-form button:active {
+  transform: translateY(0);
 }
 
 /* Goal List */
 .goal-list {
   background: white;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
 }
 
 .goal-list h2 {
-  color: #2c3e50;
+  color: #00a651;
+  font-size: 1.4rem;
   margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .goals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 20px;
 }
 
-/* Goal Card */
+/* Goal Cards */
 .goal-card {
-  background: #f8f9fa;
-  border: 2px solid #e1e8ed;
-  border-radius: 12px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
   padding: 20px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.goal-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #00a651, #008f47);
 }
 
 .goal-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  border-color: #00a651;
 }
 
-.goal-card.completed {
-  border-color: #27ae60;
-  background: #d5f4e6;
+.goal-card.completed::before {
+  background: linear-gradient(90deg, #4caf50, #2e7d32);
 }
 
-.goal-card.warning {
-  border-color: #f39c12;
-  background: #fef9e7;
+.goal-card.warning::before {
+  background: linear-gradient(90deg, #ff9800, #f57c00);
 }
 
-.goal-card.overdue {
-  border-color: #e74c3c;
-  background: #fadbd8;
+.goal-card.overdue::before {
+  background: linear-gradient(90deg, #f44336, #d32f2f);
 }
 
 .goal-card.editing {
-  background: #e8f4f8;
-  border-color: #3498db;
+  border-color: #00a651;
+  box-shadow: 0 0 0 3px rgba(0,166,81,0.1);
 }
 
 .goal-card h3 {
-  color: #2c3e50;
-  margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 16px;
   font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .goal-info {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .goal-info p {
   margin-bottom: 8px;
-  color: #555;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.goal-info strong {
+  color: #333;
+  font-weight: 600;
 }
 
 .status {
-  font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 5px;
   display: inline-block;
-  margin-top: 5px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 8px;
 }
 
 .completed-text {
-  background: #27ae60;
-  color: white;
+  background: #e8f5e8;
+  color: #2e7d32;
 }
 
 .warning-text {
-  background: #f39c12;
-  color: white;
+  background: #fff3e0;
+  color: #f57c00;
 }
 
 .overdue-text {
-  background: #e74c3c;
-  color: white;
+  background: #ffebee;
+  color: #d32f2f;
 }
 
 /* Progress Bar */
 .progress-bar {
   width: 100%;
-  height: 20px;
-  background: #ecf0f1;
-  border-radius: 10px;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 4px;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #3498db, #27ae60);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #00a651, #4caf50);
+  transition: width 0.5s ease;
+  border-radius: 4px;
 }
 
 .progress-text {
   text-align: center;
-  font-weight: bold;
-  color: #2c3e50;
-  margin-bottom: 15px;
+  font-weight: 600;
+  color: #00a651;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
 }
 
 /* Buttons */
 .card-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
 }
 
 .card-buttons button {
   flex: 1;
-  padding: 8px 12px;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .card-buttons button:first-child {
-  background: #3498db;
+  background: #00a651;
   color: white;
 }
 
 .card-buttons button:first-child:hover {
-  background: #2980b9;
+  background: #008f47;
+  transform: translateY(-1px);
 }
 
 .delete-btn {
-  background: #e74c3c !important;
+  background: #f44336 !important;
   color: white !important;
 }
 
 .delete-btn:hover {
-  background: #c0392b !important;
+  background: #d32f2f !important;
+  transform: translateY(-1px);
 }
 
 .edit-buttons {
   display: flex;
-  gap: 10px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-top: 16px;
 }
 
 .edit-buttons button {
   flex: 1;
-  padding: 8px 12px;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .edit-buttons button:first-child {
-  background: #27ae60;
+  background: #00a651;
   color: white;
 }
 
+.edit-buttons button:first-child:hover {
+  background: #008f47;
+}
+
 .edit-buttons button:last-child {
-  background: #95a5a6;
+  background: #757575;
   color: white;
+}
+
+.edit-buttons button:last-child:hover {
+  background: #616161;
 }
 
 /* Editing Form */
 .goal-card.editing input,
 .goal-card.editing select {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
-  border: 1px solid #bdc3c7;
-  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: border-color 0.3s ease;
 }
 
-/* Responsive Design */
+.goal-card.editing input:focus,
+.goal-card.editing select:focus {
+  outline: none;
+  border-color: #00a651;
+}
+
+/* Mobile Responsive */
 @media (max-width: 768px) {
+  main {
+    padding: 16px;
+  }
+  
   .forms-section {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   
   .goals-grid {
@@ -363,13 +445,17 @@ header h1 {
   }
   
   header h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+  }
+  
+  .goal-form, .deposit-form, .overview, .goal-list {
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
-  .app {
-    padding: 10px;
+  main {
+    padding: 12px;
   }
   
   .stats {
@@ -378,5 +464,13 @@ header h1 {
   
   .card-buttons {
     flex-direction: column;
+  }
+  
+  .goal-form, .deposit-form, .overview, .goal-list {
+    padding: 16px;
+  }
+  
+  header {
+    padding: 16px;
   }
 }
