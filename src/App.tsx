@@ -5,7 +5,9 @@ import GoalList from './components/GoalList'
 import Overview from './components/Overview'
 import DepositForm from './components/DepositForm'
 
-const API_URL = 'http://localhost:3001/goals'
+const API_URL = process.env.NODE_ENV === 'production' 
+  ? '/api/goals' 
+  : 'http://localhost:3001/goals'
 
 type Goal = {
   id: string
