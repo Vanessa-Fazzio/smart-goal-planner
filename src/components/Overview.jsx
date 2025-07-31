@@ -6,14 +6,16 @@ function Overview({ goals }) {
   const overallProgress = totalTarget > 0 ? (totalSaved / totalTarget) * 100 : 0
   
   const today = new Date()
+  today.setHours(0, 0, 0, 0) // Reset time to start of day
+  
   const warningGoals = goals.filter(goal => {
-    const deadline = new Date(goal.deadline)
+    const deadline = new Date(goal.deadline + 'T00:00:00')
     const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
     return daysLeft <= 30 && daysLeft >= 0 && goal.savedAmount < goal.targetAmount
   })
   
   const overdueGoals = goals.filter(goal => {
-    const deadline = new Date(goal.deadline)
+    const deadline = new Date(goal.deadline + 'T00:00:00')
     const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
     return daysLeft < 0 && goal.savedAmount < goal.targetAmount
   })
@@ -51,7 +53,8 @@ function Overview({ goals }) {
               <h4>⚠️ Deadlines Approaching</h4>
               <ul>
                 {warningGoals.map(goal => {
-                  const daysLeft = Math.ceil((new Date(goal.deadline) - today) / (1000 * 60 * 60 * 24))
+                  const deadline = new Date(goal.deadline + 'T00:00:00')
+                  const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
                   return (
                     <li key={goal.id}>{goal.name} - {daysLeft} days left</li>
                   )

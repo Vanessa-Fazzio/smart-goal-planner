@@ -11,10 +11,11 @@ function GoalCard({ goal, onUpdateGoal, onDeleteGoal }) {
 
   const progress = (goal.savedAmount / goal.targetAmount) * 100
   const isCompleted = progress >= 100
-  const remaining = goal.targetAmount - goal.savedAmount
+  const remaining = Math.max(0, goal.targetAmount - goal.savedAmount)
   
   const today = new Date()
-  const deadline = new Date(goal.deadline)
+  today.setHours(0, 0, 0, 0)
+  const deadline = new Date(goal.deadline + 'T00:00:00')
   const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
   const isOverdue = daysLeft < 0 && !isCompleted
   const isWarning = daysLeft <= 30 && daysLeft >= 0 && !isCompleted
