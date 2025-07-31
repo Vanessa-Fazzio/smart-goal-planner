@@ -1,4 +1,18 @@
-function Overview({ goals }) {
+type Goal = {
+  id: string
+  name: string
+  targetAmount: number
+  savedAmount: number
+  category: string
+  deadline: string
+  createdAt: string
+}
+
+type OverviewProps = {
+  goals: Goal[]
+}
+
+function Overview({ goals }: OverviewProps) {
   const totalGoals = goals.length
   const completedGoals = goals.filter(goal => goal.savedAmount >= goal.targetAmount).length
   const totalTarget = goals.reduce((sum, goal) => sum + goal.targetAmount, 0)
@@ -6,17 +20,17 @@ function Overview({ goals }) {
   const overallProgress = totalTarget > 0 ? (totalSaved / totalTarget) * 100 : 0
   
   const today = new Date()
-  today.setHours(0, 0, 0, 0) // Reset time to start of day
+  today.setHours(0, 0, 0, 0)
   
   const warningGoals = goals.filter(goal => {
     const deadline = new Date(goal.deadline + 'T00:00:00')
-    const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+    const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
     return daysLeft <= 30 && daysLeft >= 0 && goal.savedAmount < goal.targetAmount
   })
   
   const overdueGoals = goals.filter(goal => {
     const deadline = new Date(goal.deadline + 'T00:00:00')
-    const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+    const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
     return daysLeft < 0 && goal.savedAmount < goal.targetAmount
   })
 
@@ -54,7 +68,7 @@ function Overview({ goals }) {
               <ul>
                 {warningGoals.map(goal => {
                   const deadline = new Date(goal.deadline + 'T00:00:00')
-                  const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+                  const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
                   return (
                     <li key={goal.id}>{goal.name} - {daysLeft} days left</li>
                   )

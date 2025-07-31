@@ -1,10 +1,26 @@
 import { useState } from 'react'
 
-function GoalCard({ goal, onUpdateGoal, onDeleteGoal }) {
+type Goal = {
+  id: string
+  name: string
+  targetAmount: number
+  savedAmount: number
+  category: string
+  deadline: string
+  createdAt: string
+}
+
+type GoalCardProps = {
+  goal: Goal
+  onUpdateGoal: (id: string, updates: Partial<Goal>) => void
+  onDeleteGoal: (id: string) => void
+}
+
+function GoalCard({ goal, onUpdateGoal, onDeleteGoal }: GoalCardProps) {
   const [isEditing, setIsEditing] = useState(false)
   const [editData, setEditData] = useState({
     name: goal.name,
-    targetAmount: goal.targetAmount,
+    targetAmount: goal.targetAmount.toString(),
     category: goal.category,
     deadline: goal.deadline
   })
@@ -16,7 +32,7 @@ function GoalCard({ goal, onUpdateGoal, onDeleteGoal }) {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const deadline = new Date(goal.deadline + 'T00:00:00')
-  const daysLeft = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24))
+  const daysLeft = Math.ceil((deadline.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
   const isOverdue = daysLeft < 0 && !isCompleted
   const isWarning = daysLeft <= 30 && daysLeft >= 0 && !isCompleted
 

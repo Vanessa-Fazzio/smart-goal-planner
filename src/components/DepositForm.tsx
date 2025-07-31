@@ -1,10 +1,25 @@
 import { useState } from 'react'
 
-function DepositForm({ goals, onMakeDeposit }) {
+type Goal = {
+  id: string
+  name: string
+  targetAmount: number
+  savedAmount: number
+  category: string
+  deadline: string
+  createdAt: string
+}
+
+type DepositFormProps = {
+  goals: Goal[]
+  onMakeDeposit: (goalId: string, amount: number) => void
+}
+
+function DepositForm({ goals, onMakeDeposit }: DepositFormProps) {
   const [selectedGoal, setSelectedGoal] = useState('')
   const [amount, setAmount] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (selectedGoal && amount && parseFloat(amount) > 0) {
       onMakeDeposit(selectedGoal, parseFloat(amount))
